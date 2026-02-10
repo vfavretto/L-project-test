@@ -11,9 +11,9 @@ java {
 
 dependencies {
     compileOnly("com.android.tools.build:gradle:8.7.3")
-    compileOnly("org.jetbrains.kotlin:kotlin-gradle-plugin:2.3.10")
-    compileOnly("org.jetbrains.kotlin:compose-compiler-gradle-plugin:2.3.10")
-    compileOnly("com.google.devtools.ksp:com.google.devtools.ksp.gradle.plugin:2.3.10-1.0.30")
+    compileOnly("org.jetbrains.kotlin:kotlin-gradle-plugin:2.1.0")
+    compileOnly("org.jetbrains.kotlin:compose-compiler-gradle-plugin:2.1.0")
+    compileOnly("com.google.devtools.ksp:com.google.devtools.ksp.gradle.plugin:2.1.0-1.0.29")
 }
 
 gradlePlugin {
