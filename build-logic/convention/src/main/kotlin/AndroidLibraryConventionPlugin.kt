@@ -38,10 +38,6 @@ class AndroidLibraryConventionPlugin : Plugin<Project> {
                     buildConfig = true
                 }
             }
-
-            dependencies {
-                add("implementation", kotlin("stdlib"))
-            }
         }
     }
 }
