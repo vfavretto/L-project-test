@@ -16,6 +16,10 @@ class AndroidLibraryComposeConventionPlugin : Plugin<Project> {
                 buildFeatures {
                     compose = true
                 }
+                
+                composeOptions {
+                    kotlinCompilerExtensionVersion = "1.10.2"
+                }
             }
 
             dependencies {
