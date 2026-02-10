@@ -1,5 +1,6 @@
 import org.gradle.api.Plugin
 import org.gradle.api.Project
+import org.gradle.api.artifacts.VersionCatalogsExtension
 import org.gradle.kotlin.dsl.dependencies
 import org.gradle.kotlin.dsl.getByType
 
@@ -12,6 +13,8 @@ class AndroidFeatureConventionPlugin : Plugin<Project> {
                 apply("org.jetbrains.kotlin.plugin.serialization")
             }
 
+            val libs = extensions.getByType<VersionCatalogsExtension>().named("libs")
+            
             dependencies {
                 add("implementation", project(":core:domain"))
                 add("implementation", project(":core:common"))
@@ -34,6 +37,3 @@ class AndroidFeatureConventionPlugin : Plugin<Project> {
         }
     }
 }
-
-private val Project.libs
-    get() = extensions.getByType<org.gradle.accessors.dm.LibrariesForLibs>()

@@ -1,6 +1,8 @@
 import com.android.build.gradle.LibraryExtension
 import org.gradle.api.Plugin
 import org.gradle.api.Project
+import org.gradle.api.artifacts.VersionCatalog
+import org.gradle.api.artifacts.VersionCatalogsExtension
 import org.gradle.kotlin.dsl.configure
 import org.gradle.kotlin.dsl.dependencies
 import org.gradle.kotlin.dsl.getByType
@@ -22,6 +24,8 @@ class AndroidLibraryComposeConventionPlugin : Plugin<Project> {
                 }
             }
 
+            val libs = extensions.getByType<VersionCatalogsExtension>().named("libs")
+            
             dependencies {
                 val bom = project.dependencies.platform(libs.findLibrary("androidx.compose.bom").get())
                 add("implementation", bom)
@@ -34,6 +38,3 @@ class AndroidLibraryComposeConventionPlugin : Plugin<Project> {
         }
     }
 }
-
-private val Project.libs
-    get() = extensions.getByType<org.gradle.accessors.dm.LibrariesForLibs>()
