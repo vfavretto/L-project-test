@@ -262,6 +262,16 @@ data class EdgeEntity(
 
 O ProGuard está configurado para otimizar e ofuscar o código em builds de release.
 
+## Solução de Problemas
+
+Se você encontrar erros durante o build ou execução, consulte o [**TROUBLESHOOTING.md**](TROUBLESHOOTING.md) que contém soluções para problemas comuns como:
+
+- Erro de version catalog (`from` method called multiple times)
+- SDK location not found
+- Google Maps não carrega
+- Build lento
+- E muito mais...
+
 ## Estrutura de Pastas
 
 ```

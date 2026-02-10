@@ -96,12 +96,20 @@ O app deve abrir mostrando a tela Home (vazia inicialmente).
 
 ## 🐛 Solução de Problemas
 
+> 💡 **Nota:** A versão 1.0.1 corrigiu um erro crítico de build relacionado ao version catalog. 
+> Se você estiver usando uma versão antiga, consulte o [CHANGELOG.md](CHANGELOG.md) para detalhes.
+
 ### Gradle sync falhou
 ```bash
 # Limpar e rebuild
 ./gradlew clean
 ./gradlew build --refresh-dependencies
 ```
+
+### Erro "Invalid catalog definition"
+✅ **Este erro foi CORRIGIDO na versão 1.0.1+**
+
+Se você ainda encontrar este erro em versões antigas, consulte [TROUBLESHOOTING.md](TROUBLESHOOTING.md).
 
 ### Erro "SDK location not found"
 - Verifique se o caminho em `local.properties` está correto
