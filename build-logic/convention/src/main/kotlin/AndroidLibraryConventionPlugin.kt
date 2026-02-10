@@ -5,6 +5,7 @@ import org.gradle.api.Project
 import org.gradle.kotlin.dsl.configure
 import org.gradle.kotlin.dsl.dependencies
 import org.gradle.kotlin.dsl.kotlin
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 class AndroidLibraryConventionPlugin : Plugin<Project> {
     override fun apply(target: Project) {
@@ -27,8 +28,10 @@ class AndroidLibraryConventionPlugin : Plugin<Project> {
                     targetCompatibility = JavaVersion.VERSION_17
                 }
 
-                kotlinOptions {
-                    jvmTarget = "17"
+                kotlin {
+                    compilerOptions {
+                        jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17)
+                    }
                 }
 
                 buildFeatures {
@@ -41,10 +44,4 @@ class AndroidLibraryConventionPlugin : Plugin<Project> {
             }
         }
     }
-}
-
-private fun LibraryExtension.kotlinOptions(block: org.jetbrains.kotlin.gradle.dsl.KotlinJvmOptions.() -> Unit) {
-    (this as org.gradle.api.plugins.ExtensionAware)
-        .extensions
-        .configure("kotlinOptions", block)
 }
