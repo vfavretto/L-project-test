@@ -10,7 +10,8 @@ val homeModule = module {
             getAllTripsUseCase = get(),
             searchTripsUseCase = get(),
             toggleFavoriteUseCase = get(),
-            deleteTripUseCase = get()
+            deleteTripUseCase = get(),
+            createTripUseCase = get()
         )
     }
 }

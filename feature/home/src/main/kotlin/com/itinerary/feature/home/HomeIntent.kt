@@ -6,6 +6,8 @@ sealed interface HomeIntent {
     data object ToggleFavoritesFilter : HomeIntent
     data class NavigateToTrip(val tripId: Long) : HomeIntent
     data class ToggleFavorite(val tripId: Long) : HomeIntent
-    data object AddTrip : HomeIntent
+    data object ShowAddTripDialog : HomeIntent
+    data object DismissAddTripDialog : HomeIntent
+    data class CreateTrip(val name: String, val imageUrl: String?) : HomeIntent
     data class DeleteTrip(val tripId: Long) : HomeIntent
 }

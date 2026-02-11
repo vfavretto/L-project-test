@@ -36,7 +36,7 @@ fun ItineraryNavHost(modifier: Modifier = Modifier) {
                     navController.navigate(TripRoute(tripId))
                 },
                 onAddTrip = {
-                    // TODO: Implement add trip dialog/screen
+                    // onAddTrip callback não é mais usado - dialog é gerenciado pelo ViewModel
                 }
             )
         }

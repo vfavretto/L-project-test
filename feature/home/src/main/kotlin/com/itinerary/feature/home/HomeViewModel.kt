@@ -2,6 +2,7 @@ package com.itinerary.feature.home
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.itinerary.core.domain.usecase.trip.CreateTripUseCase
 import com.itinerary.core.domain.usecase.trip.DeleteTripUseCase
 import com.itinerary.core.domain.usecase.trip.GetAllTripsUseCase
 import com.itinerary.core.domain.usecase.trip.SearchTripsUseCase
@@ -13,7 +14,8 @@ class HomeViewModel(
     private val getAllTripsUseCase: GetAllTripsUseCase,
     private val searchTripsUseCase: SearchTripsUseCase,
     private val toggleFavoriteUseCase: ToggleFavoriteUseCase,
-    private val deleteTripUseCase: DeleteTripUseCase
+    private val deleteTripUseCase: DeleteTripUseCase,
+    private val createTripUseCase: CreateTripUseCase
 ) : ViewModel() {
 
     private val _state = MutableStateFlow(HomeState())
@@ -30,11 +32,32 @@ class HomeViewModel(
             is HomeIntent.ToggleFavoritesFilter -> toggleFavoritesFilter()
             is HomeIntent.ToggleFavorite -> toggleFavorite(intent.tripId)
             is HomeIntent.DeleteTrip -> deleteTrip(intent.tripId)
+            is HomeIntent.ShowAddTripDialog -> showAddTripDialog()
+            is HomeIntent.DismissAddTripDialog -> dismissAddTripDialog()
+            is HomeIntent.CreateTrip -> createTrip(intent.name, intent.imageUrl)
             is HomeIntent.NavigateToTrip -> {
                 // Navigation handled by UI layer
             }
-            is HomeIntent.AddTrip -> {
-                // Navigation handled by UI layer
+        }
+    }
+    
+    private fun showAddTripDialog() {
+        _state.update { it.copy(showAddTripDialog = true) }
+    }
+    
+    private fun dismissAddTripDialog() {
+        _state.update { it.copy(showAddTripDialog = false) }
+    }
+    
+    private fun createTrip(name: String, imageUrl: String?) {
+        viewModelScope.launch {
+            try {
+                createTripUseCase(name, imageUrl)
+                _state.update { it.copy(showAddTripDialog = false) }
+            } catch (e: Exception) {
+                _state.update {
+                    it.copy(error = "Erro ao criar viagem: ${e.message}")
+                }
             }
         }
     }

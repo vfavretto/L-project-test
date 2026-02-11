@@ -5,7 +5,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
-import androidx.compose.material.icons.filled.List
+import androidx.compose.material.icons.filled.FilterList
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -14,6 +14,7 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.itinerary.core.designsystem.components.ItineraryCard
 import com.itinerary.core.designsystem.components.SearchBar
+import com.itinerary.feature.home.components.AddTripDialog
 import org.koin.androidx.compose.koinViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -36,7 +37,7 @@ fun HomeScreen(
                         onClick = { viewModel.processIntent(HomeIntent.ToggleFavoritesFilter) }
                     ) {
                         Icon(
-                            imageVector = Icons.Default.List,
+                            imageVector = Icons.Default.FilterList,
                             contentDescription = "Filtrar favoritos",
                             tint = if (state.showFavoritesOnly) {
                                 MaterialTheme.colorScheme.primary
@@ -50,7 +51,7 @@ fun HomeScreen(
         },
         floatingActionButton = {
             FloatingActionButton(
-                onClick = onAddTrip,
+                onClick = { viewModel.processIntent(HomeIntent.ShowAddTripDialog) },
                 containerColor = MaterialTheme.colorScheme.primary
             ) {
                 Icon(
@@ -147,6 +148,18 @@ fun HomeScreen(
                     }
                 }
             }
+        }
+        
+        // Add Trip Dialog
+        if (state.showAddTripDialog) {
+            AddTripDialog(
+                onConfirm = { name, imageUrl ->
+                    viewModel.processIntent(HomeIntent.CreateTrip(name, imageUrl))
+                },
+                onDismiss = {
+                    viewModel.processIntent(HomeIntent.DismissAddTripDialog)
+                }
+            )
         }
     }
 }

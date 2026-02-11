@@ -8,5 +8,6 @@ data class HomeState(
     val searchQuery: String = "",
     val isLoading: Boolean = false,
     val error: String? = null,
-    val showFavoritesOnly: Boolean = false
+    val showFavoritesOnly: Boolean = false,
+    val showAddTripDialog: Boolean = false
 )
