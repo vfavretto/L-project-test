@@ -203,14 +203,6 @@ User Action → Intent → ViewModel → Use Case → Repository
 ```
 
 ### TAO Edge Graph
-```kotlin
-Edge(
-    id1: Trip.id,
-    id2: InterestMark.id,
-    type: "trip_interest_mark",
-    timestamp: Long
-)
-```
 
 ## 📦 Dependências Principais
 

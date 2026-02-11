@@ -57,7 +57,7 @@ class InterestMarkRepositoryImpl(
                 id1 = markId,
                 id2 = interestMark.tripId,
                 type = EdgeType.MARK_SCHEDULED.value,
-                timestamp = interestMark.scheduledDate,
+                timestamp = interestMark.scheduledDate ?: 0L,
                 data = null
             )
             edgeDao.insertEdge(scheduleEdge)
@@ -84,13 +84,13 @@ class InterestMarkRepositoryImpl(
                     id1 = updatedMark.id,
                     id2 = updatedMark.tripId,
                     type = EdgeType.MARK_SCHEDULED.value,
-                    timestamp = updatedMark.scheduledDate,
+                    timestamp = updatedMark.scheduledDate ?: 0L,
                     data = null
                 )
                 edgeDao.insertEdge(scheduleEdge)
             } else {
                 // Update existing edge
-                val updatedEdge = existingEdge.copy(timestamp = updatedMark.scheduledDate)
+                val updatedEdge = existingEdge.copy(timestamp = updatedMark.scheduledDate ?: 0L)
                 edgeDao.insertEdge(updatedEdge)
             }
         } else {

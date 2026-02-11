@@ -5,7 +5,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
-import androidx.compose.material.icons.filled.FilterList
+import androidx.compose.material.icons.filled.List
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -36,7 +36,7 @@ fun HomeScreen(
                         onClick = { viewModel.processIntent(HomeIntent.ToggleFavoritesFilter) }
                     ) {
                         Icon(
-                            imageVector = Icons.Default.FilterList,
+                            imageVector = Icons.Default.List,
                             contentDescription = "Filtrar favoritos",
                             tint = if (state.showFavoritesOnly) {
                                 MaterialTheme.colorScheme.primary

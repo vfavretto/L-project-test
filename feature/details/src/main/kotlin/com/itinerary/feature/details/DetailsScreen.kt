@@ -200,15 +200,18 @@ private fun DetailsContent(
             if (!state.isEditMode && mark.scheduledDate != null) {
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Icon(
-                        imageVector = Icons.Default.CalendarToday,
+                        imageVector = Icons.Default.DateRange,
                         contentDescription = null,
                         tint = MaterialTheme.colorScheme.primary
                     )
                     Spacer(modifier = Modifier.width(8.dp))
-                    Text(
-                        text = DateUtils.formatDate(mark.scheduledDate),
-                        style = MaterialTheme.typography.bodyLarge
-                    )
+                    mark.scheduledDate?.let {
+                        Text(
+                            text = DateUtils.formatDate(it),
+                            style = MaterialTheme.typography.bodyLarge
+                        )
+                    }
+
                 }
             } else if (!state.isEditMode) {
                 Text(
@@ -250,7 +253,7 @@ private fun DetailsContent(
                     )
                 }
                 Icon(
-                    imageVector = Icons.Default.OpenInNew,
+                    imageVector = Icons.Default.PlayArrow,
                     contentDescription = "Abrir no mapa",
                     tint = MaterialTheme.colorScheme.primary
                 )
@@ -275,10 +278,12 @@ private fun DetailsContent(
                     maxLines = 5
                 )
             } else if (mark.userNote != null) {
-                Text(
-                    text = mark.userNote,
-                    style = MaterialTheme.typography.bodyMedium
-                )
+                mark.userNote?.let {
+                    Text(
+                        text = it,
+                        style = MaterialTheme.typography.bodyMedium
+                    )
+                }
             } else {
                 Text(
                     text = "Sem anotações",

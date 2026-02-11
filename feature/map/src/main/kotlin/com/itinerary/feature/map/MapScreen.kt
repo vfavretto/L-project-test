@@ -96,7 +96,7 @@ fun MapScreen(
                 }
             ) {
                 Icon(
-                    imageVector = Icons.Default.Timeline,
+                    imageVector = Icons.Default.Settings,
                     contentDescription = "Modo distância",
                     tint = if (state.isDistanceMode) {
                         MaterialTheme.colorScheme.onPrimary
@@ -112,7 +112,7 @@ fun MapScreen(
                 containerColor = MaterialTheme.colorScheme.surface
             ) {
                 Icon(
-                    imageVector = Icons.Default.CenterFocusWeak,
+                    imageVector = Icons.Default.LocationOn,
                     contentDescription = "Recentralizar"
                 )
             }

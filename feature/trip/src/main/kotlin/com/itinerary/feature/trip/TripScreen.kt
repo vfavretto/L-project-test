@@ -44,7 +44,7 @@ fun TripScreen(
         bottomBar = {
             NavigationBar {
                 NavigationBarItem(
-                    icon = { Icon(Icons.Default.Map, contentDescription = null) },
+                    icon = { Icon(Icons.Default.Email, contentDescription = null) },
                     label = { Text(TripDestination.Map.label) },
                     selected = state.currentDestination == TripDestination.Map,
                     onClick = {
@@ -64,7 +64,7 @@ fun TripScreen(
                     }
                 )
                 NavigationBarItem(
-                    icon = { Icon(Icons.Default.CalendarToday, contentDescription = null) },
+                    icon = { Icon(Icons.Default.DateRange, contentDescription = null) },
                     label = { Text(TripDestination.Schedule.label) },
                     selected = state.currentDestination == TripDestination.Schedule,
                     onClick = {
